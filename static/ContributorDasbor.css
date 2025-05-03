@@ -1,0 +1,114 @@
+/* Gaya Umum */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to top, #16222A, #3A6073);
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(58, 63, 68, 0.5);
+    box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 150px;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: #ffffff;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: center;
+    color: #ffffff;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    
+}
+
+ul li {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+    background-color: #c0392b;
+    cursor: pointer;
+}
+
+/* Tombol dan Tautan */
+.actions a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.actions a:hover {
+    background-color: #c0392b;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p, ul li {
+        font-size: 14px;
+    }
+
+    .actions a {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+a
+{
+    margin-left: 10px;
+    margin-right: 10px;
+}

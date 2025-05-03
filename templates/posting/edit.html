@@ -1,0 +1,46 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'edit.css' %}">
+
+<div class="container">
+    <a href="{% url kategori %}">Kembali ke {{kategori}}</a>
+    <h1>Edit {{kategori}}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <label for="namaTempat"><strong>Nama Tempat:</strong></label>
+        <input type="text" id="namaTempat" name="nama" value="{{ tempat.nama }}" required>
+
+        <label for="deskripsi"><strong>Deskripsi Singkat:</strong></label>
+        <textarea id="deskripsi" name="deskripsi" rows="4" required>{{ tempat.deskripsi }}</textarea>
+
+        <label for="foto"><strong>Ganti Foto:</strong></label>
+        <input type="file" id="foto" name="foto" accept="image/*">
+        
+        {% if tempat.foto %}
+            <p><strong>Currently: </strong><img src="{{ tempat.foto.url }}" alt="Current photo" style="width: 100px; height: auto;"></p>
+        {% endif %}
+
+        <label for="googleMapsLink"><strong>Link Google Maps:</strong></label>
+        <input type="text" id="googleMapsLink" name="google_maps_url" value="{{ tempat.google_maps_url }}" required>
+                
+        <button type="submit">Simpan</button>
+    </form>
+    
+</div>
+
+{% if form.errors %}
+    <ul>
+        {% for field, errors in form.errors.items %}
+            <li>{{ field }}: 
+                <ul>
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock %}

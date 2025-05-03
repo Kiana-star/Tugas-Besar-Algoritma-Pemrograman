@@ -1,0 +1,121 @@
+body
+{
+    background: linear-gradient(to top, #16222A, #3A6073);
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(58, 63, 68, 0.5);
+    box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.form-container h1 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.form-container label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-container label
+{
+    color: #ffffff;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #b1416e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #a0335a;
+}
+
+.add-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.add-button button {
+    padding: 10px 20px;
+    background-color: #b1416e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.actions
+{
+    margin: 5px;
+    margin-top: 20px;
+}
+
+.actions a
+{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #00ff73;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+}
+
+.actions a:hover
+{
+    background: #009945;
+    cursor: pointer;
+    border: #0000006c;
+}
+
+.category-links
+{
+    margin: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+}
+
+.category-links a
+{
+    width: 100%;
+    padding: 10px;
+    background-color: #b1416e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.category-links a:hover
+{
+    background-color: #a0335a;
+}

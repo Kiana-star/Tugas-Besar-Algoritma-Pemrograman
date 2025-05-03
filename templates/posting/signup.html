@@ -1,0 +1,65 @@
+{% load static %}
+{% block content %}
+<title>WiMaP</title>
+<link rel="icon" type="image/x-icon" href="{% static 'static\WiMaP.png' %}">
+<link rel="stylesheet" href="{% static 'signup.css' %}">
+<div class="container">
+    <div class="actions">
+        <a href="{% url 'pilih' %}">Kembali</a>
+    </div>
+    <h2>Sign Up</h2>
+
+    <!-- Menampilkan pesan error umum -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Form Pendaftaran -->
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Username -->
+        <div class="form-field">
+            <label for="id_username">Username:</label>
+            <input type="text" name="username" class="form-input" required id="id_username">
+            {% for error in form.username.errors %}
+                <small style="color: red;">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <!-- Password -->
+        <div class="form-field">
+            <label for="id_password1">Password:</label>
+            <input type="password" name="password1" class="form-input" required id="id_password1">
+            {% for error in form.password1.errors %}
+                <small style="color: red;">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <!-- Password Confirmation -->
+        <div class="form-field">
+            <label for="id_password2">Password confirmation:</label>
+            <input type="password" name="password2" class="form-input" required id="id_password2">
+            {% for error in form.password2.errors %}
+                <small style="color: red;">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-field">
+            <button type="submit" class="form-submit">Sign Up</button>
+        </div>
+
+        <div class="quastion">
+            <p>Sudah punya account? <a href="{% url 'login' %}">login</a></p>
+        </div>
+
+        <!-- Additional Actions -->
+        
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% load static %}
+{% block content %}
+<title>WiMaP</title>
+<link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Judul Halaman Login -->
+         <div class="actions">
+            <a href="{% url 'pilih' %}">kembali</a>
+        </div>
+        <div class="logo">Login</div>
+        <!-- Formulir untuk Login -->
+        <div class="login-item">
+            <form method="post" action="{% url 'login' %}" class="form form-login">
+                {% csrf_token %}
+                <div class="form-field">
+                    <label class="user" for="id_username"><span class="hidden">Username</span></label>
+                    <input id="id_username" type="text" name="username" class="form-input" placeholder="Username" required>
+                </div>
+
+                <div class="form-field">
+                    <label class="lock" for="id_password"><span class="hidden">Password</span></label>
+                    <input id="id_password" type="password" name="password" class="form-input" placeholder="Password" required>
+                </div>
+
+                <div class="form-field">
+                    <input type="submit" value="Log in">
+                </div>
+            </form>
+
+            <!-- Menampilkan pesan jika ada -->
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="quastion">
+            <p>tidak punya account? <a href="{% url 'signup' %}">sign up</a></p>
+        </div>
+        
+    </div>
+</body>
+</html>
+{% endblock content%}

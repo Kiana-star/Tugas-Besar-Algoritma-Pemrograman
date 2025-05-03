@@ -1,0 +1,53 @@
+<header>
+  {% extends 'base.html' %}
+</header>
+
+{% load static %}
+
+{% block content %}
+<!-- Link ke CSS untuk styling halaman -->
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<div class="search-bar">
+  <form method="GET" action="{% url 'search_results' %}">
+    <input type="text" name="q" placeholder="Cari di semua kategori...">
+    <button type="submit">Cari</button>
+  </form>
+    
+</div>
+  <span class="add-button"><a href="{% url 'tambah' kategori='kuliner' %}">
+      <button>Tambah Tempat</button>
+    </a></span>
+
+<div class="container">
+    <!-- Box untuk kategori Wisata -->
+    <div class="box">
+      <span></span>
+      <div class="content">
+        <h2>Wisata</h2>
+        <!-- Link ke halaman Wisata -->
+        <a href="{% url 'wisata' %}"><p>Lets Go</p></a>
+      </div>
+    </div>
+    
+    <!-- Box untuk kategori Kuliner -->
+    <div class="box">
+      <span></span>
+      <div class="content">
+        <h2>Kuliner</h2>
+        <!-- Link ke halaman Kuliner -->
+        <a href="{% url 'kuliner' %}"><p>Lets Go</p></a>
+      </div>
+    </div>
+    
+    <!-- Box untuk kategori Penginapan -->
+    <div class="box">
+      <span></span>
+      <div class="content">
+        <h2>Kos/Penginapan</h2>
+        <!-- Link ke halaman Penginapan -->
+        <a href="{% url 'penginapan' %}"><p>Lets Go</p></a>
+      </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'ContributorDasbor.css' %}">
+<div class="actions">
+    <a href="{% url 'pilih' %}">Kembali ke Home</a>
+</div>
+<div class="container">
+    <h1>Dashboard Contributor</h1>
+    <p>Selamat datang, {{ user.username }}!</p>
+
+    <h2>Aksi</h2>   
+    <ul>
+        <li style="text-align: center;"><a href="{% url 'tambah' kategori='kuliner' %}">Tambah Kuliner</a>
+        <a href="{% url 'tambah' kategori='penginapan' %}">Tambah Penginapan</a>
+        <a href="{% url 'tambah' kategori='wisata' %}">Tambah Wisata</a></li>
+    </ul>
+    <ul>
+        <li>Kuliner: {{ kuliner_count }}</li>
+        <li>Penginapan: {{ penginapan_count }}</li>
+        <li>Wisata: {{ wisata_count }}</li>
+    </ul>
+      
+
+    
+</div>
+{% endblock %}

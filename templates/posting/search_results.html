@@ -1,0 +1,121 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'search.css' %}">
+
+<div class="container">
+    <!-- Bagian Header -->
+    <header>
+        <div class="actions">
+            <a href="{% url 'pilih' %}">Kembali</a>
+        </div>
+        <h1>Hasil Pencarian: "{{ query }}"</h1>
+
+        <!-- Form Pencarian -->
+        <div class="search-bar">
+            <form method="GET" action="{% url 'search_results' %}">
+                <input 
+                    type="text" 
+                    name="q" 
+                    value="{{ query }}" 
+                    placeholder="Cari kuliner, wisata, atau penginapan..."
+                />
+                <button type="submit">🔍</button>
+            </form>
+        </div>
+    </header>
+
+    <!-- Hasil Pencarian -->
+    <div class="results-list">
+        <!-- Hasil Wisata -->
+        <div class="category-section">
+            <h2>Wisata</h2>
+            {% if wisata %}
+                <div class="kuliner-list">
+                    {% for item in wisata %}
+                        <div class="kuliner-item">
+                            <img 
+                                src="{% if item.foto %}{{ item.foto.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}" 
+                                alt="Foto {{ item.nama }}"
+                            >
+                            <div class="item-info">
+                                <h3>{{ item.nama }}</h3>
+                                <p>{{ item.deskripsi }}</p>
+                                {% if item.google_maps_url %}
+                                    <p>
+                                        <a href="{{ item.google_maps_url }}" target="_blank" class="maps-link">
+                                            Lihat {{ item.nama }}
+                                        </a>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Tidak ada hasil ditemukan untuk kategori Wisata.</p>
+            {% endif %}
+        </div>
+
+        <!-- Hasil Kuliner -->
+        <div class="category-section">
+            <h2>Kuliner</h2>
+            {% if kuliner %}
+                <div class="kuliner-list">
+                    {% for item in kuliner %}
+                        <div class="kuliner-item">
+                            <img 
+                                src="{% if item.foto %}{{ item.foto.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}" 
+                                alt="Foto {{ item.nama }}"
+                            >
+                            <div class="item-info">
+                                <h3>{{ item.nama }}</h3>
+                                <p>{{ item.deskripsi }}</p>
+                                {% if item.google_maps_url %}
+                                    <p>
+                                        <a href="{{ item.google_maps_url }}" target="_blank" class="maps-link">
+                                            Lihat {{ item.nama }}
+                                        </a>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Tidak ada hasil ditemukan untuk kategori Kuliner.</p>
+            {% endif %}
+        </div>
+
+        <!-- Hasil Penginapan -->
+        <div class="category-section">
+            <h2>Penginapan</h2>
+            {% if penginapan %}
+                <div class="kuliner-list">
+                    {% for item in penginapan %}
+                        <div class="kuliner-item">
+                            <img 
+                                src="{% if item.foto %}{{ item.foto.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}" 
+                                alt="Foto {{ item.nama }}"
+                            >
+                            <div class="item-info">
+                                <h3>{{ item.nama }}</h3>
+                                <p>{{ item.deskripsi }}</p>
+                                {% if item.google_maps_url %}
+                                    <p>
+                                        <a href="{{ item.google_maps_url }}" target="_blank" class="maps-link">
+                                            Lihat {{ item.nama }}
+                                        </a>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Tidak ada hasil ditemukan untuk kategori Penginapan.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

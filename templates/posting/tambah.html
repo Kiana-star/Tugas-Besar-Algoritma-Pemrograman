@@ -1,0 +1,47 @@
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'tambah.css' %}">
+
+<header>
+    <div class="actions">
+        <a href="{% url 'pilih' %}">Kembali</a>
+    </div>
+</header>
+
+<div class="form-container">
+    <h1>Tambah Tempat Baru untuk {{kategori}}</h1>
+
+    <!-- Form untuk menambahkan tempat baru -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required>
+    
+        <label for="deskripsi">Deskripsi:</label>
+        <textarea id="deskripsi" name="deskripsi" required></textarea>
+    
+        <label for="google_maps_url">Google Maps URL:</label>
+        <input type="url" id="google_maps_url" name="google_maps_url" placeholder="URL Google Maps" required>
+    
+        <label for="foto">Foto:</label>
+        <input style="color: white;" type="file" id="foto" name="foto" required>
+    
+        <button type="submit">Simpan</button>
+    </form>
+    
+    <div class="category-links">
+        {% if kategori == 'kuliner' %}
+            <a href="{% url 'tambah' kategori='penginapan' %}">Tambah Penginapan</a>
+            <a href="{% url 'tambah' kategori='wisata' %}">Tambah Wisata</a>
+        {% elif kategori == 'penginapan' %}
+            <a href="{% url 'tambah' kategori='kuliner' %}">Tambah Kuliner</a>
+            <a href="{% url 'tambah' kategori='wisata' %}">Tambah Wisata</a>
+        {% elif kategori == 'wisata' %}
+            <a href="{% url 'tambah' kategori='kuliner' %}">Tambah Kuliner</a>
+            <a href="{% url 'tambah' kategori='penginapan' %}">Tambah Penginapan</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

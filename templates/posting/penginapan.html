@@ -1,0 +1,67 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'kuliner.css' %}">
+
+<div class="container">
+    <header>
+        <div class="actions">
+            <a href="{% url 'pilih' %}">Kembali</a>
+        </div>    
+        <h1>Kos/Penginapan</h1>
+        <div class="add-button">
+            <a href="{% url 'tambah' kategori='penginapan' %}">
+                <button>Tambah Tempatnya</button>
+
+            </a>
+        </div>
+        <div class="search-bar">
+            <form method="GET" action="{% url 'penginapan' %}">
+                <input 
+                    type="text" 
+                    name="q" 
+                    value="{{ query }}" 
+                    placeholder="Cari penginapan..."
+                />
+                <button type="submit">🔍</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="kuliner-list">
+        {% for item in penginapan %}
+        <div class="kuliner-item">
+            <img 
+                src="{% if item.foto %}{{ item.foto.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}" 
+                alt="Foto {{ item.nama }}"
+            />
+            <h2 style="margin-left: 50px; margin-right: 50px;">{{ item.nama }}</h2>
+            <p style="margin-left: 50px; margin-right: 50px;">{{ item.deskripsi }}</p>
+            {% if item.google_maps_url %}
+            <p style="margin-left: 50px; margin-right: 50px;">
+                <a href="{{ item.google_maps_url }}" target="_blank" class="maps-link">
+                    Lihat lokasi
+                </a>
+            </p>
+            {% endif %}
+            
+            <div class="edit-delete-buttons">
+                {% if request.user.role == 'admin' or request.user.role == 'super_admin' or item.created_by == request.user %}
+                <!-- Tombol Edit -->
+                <a href="{% url 'edit' kategori='penginapan' tempat_id=item.id %}">
+                    <button>Edit</button>
+                </a>
+                <!-- Tombol Hapus -->
+                <form method="POST" action="{% url 'hapus_tempat' kategori='penginapan' tempat_id=item.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" onclick="return confirm('Yakin ingin menghapus {{ item.nama }}?')">Hapus</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

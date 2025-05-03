@@ -1,0 +1,51 @@
+{% load static %}
+<!-- Header dengan style text-align: right untuk menyusun konten di sebelah kanan -->
+<title>WiMaP</title>
+<link rel="stylesheet" href="{% static 'StyleBase.css' %}">
+<header style="text-align: right;">
+    <div class="contain">
+        <span></span>
+        <div class="country">
+            <!-- Cek apakah user sudah login atau belum -->
+            {% if user.is_authenticated %}
+                <!-- Jika sudah login, tampilkan pesan selamat datang dan role user -->
+                <p>Halo, {{ user.username }}! Anda login sebagai {{ user.role }}</p>
+                
+                <!-- Kontainer untuk tombol -->
+                <div class="button-container">
+                    <!-- Form logout -->
+                    <form action="{% url 'logout' %}" method="post" class="logout-form">
+                        {% csrf_token %}
+                        <button type="submit" class="custom-btn btn-7"><span>Logout</span></button>
+                    </form>
+
+                    <!-- Tampilkan tombol Admin Panel untuk admin atau super_admin -->
+                    {% if user.role == 'admin' or user.role == 'super_admin' %}
+                        <a href="/admin/" class="admin-button">
+                            <button class="custom-btn btn-7"><span>Admin Panel</span></button>
+                        </a>
+                    {% elif user.role == 'contributor' %}
+                        <a href="{% url 'contributor_dashboard' %}" class="contributor-button">
+                            <button class="custom-btn btn-7"><span>Contributor Panel</span></button>
+                        </a>
+                    {% endif %}
+                </div>
+            {% else %}
+                <!-- Jika belum login, tampilkan link untuk login atau sign up -->
+                <span class="blackin"><a href="{% url 'login' %}">Login</a></span> |
+                <span class="yellowup"><a href="{% url 'signup' %}">Sign Up</a></span>
+            {% endif %}
+        </div>  
+    </div>
+</header>
+
+<!-- Konten utama halaman yang bisa diakses oleh semua orang -->
+{% block content %}
+{% endblock %}
+
+<!-- Footer di bagian bawah halaman -->
+<div class="base">
+    <footer>
+        <a href="{% url 'credits' %}">&copy; 2024 WiMaP Team</a>
+    </footer>
+</div>

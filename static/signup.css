@@ -1,0 +1,93 @@
+body {
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    background: #16222A; /* fallback */
+    background: -webkit-linear-gradient(to top, #16222A, #3A6073);
+    background: linear-gradient(to top, #16222A, #3A6073);
+}
+
+.container {
+    background: rgba(58, 63, 68, 0.5);
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    color: #fff;
+    margin-top: 150px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-field {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-submit {
+    background-color: #00B9BC;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.form-submit:hover {
+    background-color: #197071;
+}
+
+.actions
+{
+    margin-left: 20px;
+    margin-bottom: 20px;   
+}
+
+.actions a
+{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #00ff73;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+}
+
+.actions a:hover
+{
+    background: #009945;
+    cursor: pointer;
+    border: #0000006c;
+}
+
+.quastion
+{
+    text-align: center;
+}
+
+.quastion a
+{
+    color: white;
+}
